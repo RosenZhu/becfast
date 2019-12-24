@@ -18,4 +18,4 @@ INSTNAME=${NAME}_inst
 
 mkdir $OUTDIR
 ./BECFuzzDyninst -i $TARGET  -o  $OUTDIR/${INSTNAME} -b $OUTDIR
-./becfuzz-afl -i $SEEDS -o $OUTDIR/out -t 500 -m 1G -- $OUTDIR/$INSTNAME $PARAMS
+./becfuzz-aflfast -i $SEEDS -o $OUTDIR/out -t 500 -m 1G -- $OUTDIR/$INSTNAME $PARAMS
