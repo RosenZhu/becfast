@@ -58,7 +58,7 @@ BPatch_function *initAflForkServer;
 
 
 
-const char *instLibrary = "./libBECFuzzDyninst.so";
+const char *instLibrary = "./libBECFuzzDyninst64.so";
 
 static const char *OPT_STR = "i:o:l:vb:E:r:";
 static const char *USAGE = " -i <binary> -o <binary> -b <becfuzz-dir> -l <linked-library> -r <runtime-library>\n \
@@ -527,8 +527,7 @@ int main (int argc, char **argv){
     ofstream numedges;
     numedges.open (num_file.c_str(), ios::out | ios::app | ios::binary); //write file
     if(numedges.is_open()){
-        numedges << num_conditional << " " << max_map_size << endl; 
-        //numedges << num_indirect << endl;
+        numedges << max_map_size << " " << num_conditional << " " << num_indirect << endl;
     }
     numedges.close();    
     //TODO: fuzzer gets the values through pipe (or shared memory?)?
