@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-export PATH=$PATH:/home/xgzhu/apps/becfast
-export AFL_NO_UI=1 
+export PATH=$PATH:/home/xgzhu/apps/becfast 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xgzhu/apps/becfast
+export AFL_NO_UI=1
 # $0: runfuzz.sh itself; $1: path to output directory
 # $2: fuzzing seed dir;
 # $3: path to target binary;  ${@:4}: parameters running targets
@@ -26,14 +26,14 @@ INSTNAME=${NAME}_inst
 
 
 mkdir $OUTDIR
-./BECFuzzDyninst${VERSION} -i $TARGET  -o  ${OUTDIR}/${INSTNAME} -b $OUTDIR
+./BECFastDyninst${VERSION} -i $TARGET  -o  ${OUTDIR}/${INSTNAME} -b $OUTDIR
 sleep 1
 
 # if [ "$WITHDICT"x = "nodict"x ]
 # then
-#     COMMD="./becfuzz-aflfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
+#     COMMD="./becfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
 # else
-#     COMMD="./becfuzz-aflfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -x ${WITHDICT} -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
+#     COMMD="./becfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -x ${WITHDICT} -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
 # fi
 
 

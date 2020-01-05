@@ -1,5 +1,5 @@
 #
-# becfuzz-aflfast - makefile
+# becfast - makefile
 # -----------------------------
 #
 # Written by Xiaogang Zhu <xiaogangzhu@swin.edu.au>
@@ -52,7 +52,7 @@ MISC_PATH   = $(PREFIX)/share/afl
 
 # PROGS intentionally omit as, which gets installed elsewhere.
 # afl-showmap
-PROGS       = becfuzz-aflfast64 libBECFuzzDyninst64 BECFuzzDyninst64 becfuzz-aflfast128 libBECFuzzDyninst128 BECFuzzDyninst128 becfuzz-aflfast256 libBECFuzzDyninst256 BECFuzzDyninst256
+PROGS       = becfast64 libBECFastDyninst64 BECFastDyninst64 becfast128 libBECFastDyninst128 BECFastDyninst128 becfast256 libBECFastDyninst256 BECFastDyninst256
 SH_PROGS    = afl-plot
 
 CFLAGS     ?= -O3 -funroll-loops
@@ -84,34 +84,34 @@ test_x86:
 
 endif
 
-# BECFuzz dependencies
+# BECFast dependencies
 
-becfuzz-aflfast64: becfuzz-aflfast64.c $(COMM_HDR) | test_x86
+becfast64: becfast64.c $(COMM_HDR) | test_x86
 	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS)
 
-becfuzz-aflfast128: becfuzz-aflfast128.c $(COMM_HDR) | test_x86
+becfast128: becfast128.c $(COMM_HDR) | test_x86
 	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS)
 
-becfuzz-aflfast256: becfuzz-aflfast256.c $(COMM_HDR) | test_x86
+becfast256: becfast256.c $(COMM_HDR) | test_x86
 	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS)
 
-libBECFuzzDyninst64: libBECFuzzDyninst64.cpp
-	$(CXX) $(CXXFLAGS) -o libBECFuzzDyninst64.so libBECFuzzDyninst64.cpp $(LDFLAGS) $(LIBFLAGS)
+libBECFastDyninst64: libBECFastDyninst64.cpp
+	$(CXX) $(CXXFLAGS) -o libBECFastDyninst64.so libBECFastDyninst64.cpp $(LDFLAGS) $(LIBFLAGS)
 
-BECFuzzDyninst64: BECFuzzDyninst64.cpp
-	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFuzzDyninst64 BECFuzzDyninst64.cpp $(LDFLAGS)
+BECFastDyninst64: BECFastDyninst64.cpp
+	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFastDyninst64 BECFastDyninst64.cpp $(LDFLAGS)
 
-libBECFuzzDyninst128: libBECFuzzDyninst128.cpp
-	$(CXX) $(CXXFLAGS) -o libBECFuzzDyninst128.so libBECFuzzDyninst128.cpp $(LDFLAGS) $(LIBFLAGS)
+libBECFastDyninst128: libBECFastDyninst128.cpp
+	$(CXX) $(CXXFLAGS) -o libBECFastDyninst128.so libBECFastDyninst128.cpp $(LDFLAGS) $(LIBFLAGS)
 
-BECFuzzDyninst128: BECFuzzDyninst128.cpp
-	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFuzzDyninst128 BECFuzzDyninst128.cpp $(LDFLAGS)
+BECFastDyninst128: BECFastDyninst128.cpp
+	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFastDyninst128 BECFastDyninst128.cpp $(LDFLAGS)
 
-libBECFuzzDyninst256: libBECFuzzDyninst256.cpp
-	$(CXX) $(CXXFLAGS) -o libBECFuzzDyninst256.so libBECFuzzDyninst256.cpp $(LDFLAGS) $(LIBFLAGS)
+libBECFastDyninst256: libBECFastDyninst256.cpp
+	$(CXX) $(CXXFLAGS) -o libBECFastDyninst256.so libBECFastDyninst256.cpp $(LDFLAGS) $(LIBFLAGS)
 
-BECFuzzDyninst256: BECFuzzDyninst256.cpp
-	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFuzzDyninst256 BECFuzzDyninst256.cpp $(LDFLAGS)
+BECFastDyninst256: BECFastDyninst256.cpp
+	$(CXX) -Wl,-rpath-link,$(DYN_ROOT)/lib -Wl,-rpath-link,$(DYN_ROOT)/include $(CXXFLAGS) -o BECFastDyninst256 BECFastDyninst256.cpp $(LDFLAGS)
 
 
 

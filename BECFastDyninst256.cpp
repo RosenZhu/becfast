@@ -58,7 +58,7 @@ BPatch_function *initAflForkServer;
 
 
 
-const char *instLibrary = "./libBECFuzzDyninst128.so";
+const char *instLibrary = "./libBECFastDyninst256.so";
 
 static const char *OPT_STR = "i:o:l:vb:E:r:";
 static const char *USAGE = " -i <binary> -o <binary> -b <becfuzz-dir> -l <linked-library> -r <runtime-library>\n \
@@ -521,7 +521,7 @@ int main (int argc, char **argv){
     u32 num_tpm = num_conditional + num_indirect * NUM_INDIRECT_TARGETS;
     u16 num_exp = (u16)ceil( log(num_tpm) / log(2) );
     // be general with the shared memory
-    if(num_exp < MAP_SIZE_POW2128) num_exp = MAP_SIZE_POW2128;
+    if(num_exp < MAP_SIZE_POW2256) num_exp = MAP_SIZE_POW2256;
 
 
     max_map_size = (1 << num_exp);

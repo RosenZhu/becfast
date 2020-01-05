@@ -26,14 +26,14 @@ INSTNAME=${NAME}_inst
 
 
 # mkdir $OUTDIR
-# ./BECFuzzDyninst${VERSION} -i $TARGET  -o  ${OUTDIR}/${INSTNAME} -b $OUTDIR
+# ./BECFastDyninst${VERSION} -i $TARGET  -o  ${OUTDIR}/${INSTNAME} -b $OUTDIR
 # sleep 1
 
 if [ "$WITHDICT"x = "nodict"x ]
 then
-    COMMD="./becfuzz-aflfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
+    COMMD="./becfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
 else
-    COMMD="./becfuzz-aflfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -x ${WITHDICT} -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
+    COMMD="./becfast${VERSION} -i $SEEDS -o ${OUTDIR}/out -x ${WITHDICT} -t $TIMEOUT -m 1G -- ${OUTDIR}/${INSTNAME} $PARAMS"
 fi
 
 
