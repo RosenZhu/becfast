@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-export PATH=$PATH:/apps/becfast
+export PATH=$PATH:/home/xgzhu/apps/becfast
 export AFL_NO_UI=1 
-
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xgzhu/apps/becfast
 # $0: runfuzz.sh itself; $1: path to output directory
 # $2: fuzzing seed dir;
 # $3: path to target binary;  ${@:4}: parameters running targets
@@ -45,7 +45,6 @@ sleep 1
 # ps -ef | grep "$COMMD" | grep -v 'grep' | awk '{print $2}' | xargs kill -2
 
 # rm ${OUTDIR}/${INSTNAME}
-# chmod 777 -R $OUTDIR
 # sleep 1
 
 
